@@ -1,0 +1,17 @@
+@import url(./__img/card__img.css);
+@import url(./__label-like/card__label-like.css);
+@import url(./__label/card__label.css);
+@import url(./__title/card__title.css);
+
+.card{
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.card:hover{
+    opacity: 0.5;
+}
+
+
+
