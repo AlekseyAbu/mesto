@@ -12,7 +12,7 @@ let job = document.querySelector('.profile__subtitle');
 
 function popupToggle() {
 
-    if (!popup.classList.contains('popup_opened')) { //то что нужно?
+    if (!popup.classList.contains('popup_opened')) { 
         nameInput.value = name.textContent;
         jobInput.value = job.textContent;
     } 
@@ -36,7 +36,7 @@ function formSubmitHandler (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     
-    saveClose.addEventListener('click', popupToggle);
+    popupToggle();
 }
 
 
