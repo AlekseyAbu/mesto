@@ -2,12 +2,14 @@
 @import url(./__label-like/card__label-like.css);
 @import url(./__label/card__label.css);
 @import url(./__title/card__title.css);
+@import url(./__basket/card__basket.css);
 
 .card{
     margin: 0;
     background-color: #fff;
     border-radius: 10px;
     height: 361px;
+    position: relative;
 }
 
 .card:hover{

@@ -78,7 +78,7 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup popup_profile">
         <div class="popup__container">
             <button class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
@@ -90,14 +90,35 @@
         </div>
     </section>
 
+    <section class="popup popup_card">
+        <div class="popup__container">
+            <button class="popup__close-button popup__close-button_card"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form popup__form_card" name="save">
+                <input type="text" class="popup__input popup__input_name popup__input_cardname" name="name" value="" placeholder='Название'>
+                <input type="text" class="popup__input popup__input_description popup__input_link" name="description" value="" placeholder="Ссылка на картинку">
+                <button class="popup__save popup__save_card">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
     <template id="card">
         <li class="card">
+            <button class="card__basket"></button>
             <img class="card__img" src="./images/Karachayevsk.png" alt="Карачаевск">
             <div class="card__label">
                 <h3 class="card__title">Карачаевск</h3>
-                <button class="card__label-like"></button>
+                <button class="card__label-like "></button>
             </div>
         </li>
     </template>
+
+    <section class="popup-img">
+        <div class="popup-img__container">
+            <button class="popup-img__close"></button>
+            <img class="popup-img__img" src="" alt="">
+            <p class="popup-img__text"></p>
+        </div>
+    </section>
 <script src="./scripts/script.js"></script>
 </body>

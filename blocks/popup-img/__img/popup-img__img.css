@@ -1,0 +1,4 @@
+.popup-img__img{
+    overflow: hidden;
+    object-fit: cover;
+}
