@@ -94,6 +94,7 @@ function addCard(item){ //это функция добавления карто�
 
     const cardBasket =  cardElement.querySelector('.card__basket');
     const cardImage = cardElement.querySelector('.card__img');
+    const cardTitle = cardElement.querySelector('.card__title');
     
     cardBasket.addEventListener('click', deleteCard);//обработчик здесь, так как майним карточки
     cardImage.addEventListener('click', function(){
@@ -101,9 +102,9 @@ function addCard(item){ //это функция добавления карто�
         popupToggle(popupImgOpen);
     })
     
-    cardElement.querySelector('.card__title').textContent = item.name; //куда вставляем тайтл
-    cardElement.querySelector('.card__img').src = item.link; //куда вставляем изображение
-    cardElement.querySelector('.card__img').alt = item.alt;
+    cardTitle.textContent = item.name; //куда вставляем тайтл
+    cardImage.src = item.link; //куда вставляем изображение
+    cardImage.alt = item.alt;
 
     //cardContainer.prepend(cardElement); 
     return cardElement;
@@ -114,11 +115,12 @@ function renderCard(cardElement, cardContainer){
 }
 
 initialCards.forEach ((item) =>  {
-const cardElement = addCard(item); 
-renderCard(cardElement, cardContainer);} )//ф-ция обработки массива //обрабатываем через эту функцию
+    const cardElement = addCard(item); 
+    renderCard(cardElement, cardContainer);
+})//ф-ция обработки массива //обрабатываем через эту функцию
 
 const formCardPopup = document.querySelector('.popup__save_card');
-const cardname = document.querySelector('.popup__input_cardname');
+const cardName = document.querySelector('.popup__input_cardname');
 const link = document.querySelector('.popup__input_link');
 const formElementCard = document.querySelector('.popup__form_card');
 
@@ -128,16 +130,16 @@ popupImgCloseButton.addEventListener('click',() =>
 function formSubmitHandlerCard(e) {
     e.preventDefault();
 
-    const newname = cardname.value;
-    const newlink = link.value;
-    const newcard = { name: newname, link: newlink}
+    const newName = cardName.value;
+    const newLink = link.value;
+    const newCard = { name: newName, link: newLink}
 
     //addCard(newcard)
-    const cardElement = addCard(newcard); 
+    const cardElement = addCard(newCard); 
     renderCard(cardElement, cardContainer);
     popupToggle(popupCard);
 
-    cardname.value = '';
+    cardName.value = '';
     link.value = '';
 }
 
