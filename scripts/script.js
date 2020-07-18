@@ -6,7 +6,7 @@ const popupCloseButton = popup.querySelector('.popup__close-button');
 const popupCard = document.querySelector('.popup_card');
 const popupCardOpenButton = document.querySelector('.profile__button');
 const popupCardCloseButton = document.querySelector('.popup__close-button_card');
-
+const popupStat = document.querySelector('.popup');
 
 const formElement = document.querySelector('.popup__form');
 
@@ -51,8 +51,8 @@ const initialCards = [
     }
 ];
 
-function popupToggle(popup) { //вызов попапа
-    popup.classList.toggle('popup_opened'); //с помощью класса, открываем и закрываем попап
+function popupToggle(popupArg) { //вызов попапа
+    popupArg.classList.toggle('popup_opened'); //с помощью класса, открываем и закрываем попап
 }
 
 popupCardOpenButton.addEventListener('click', () =>
@@ -67,7 +67,8 @@ popupOpenButton.addEventListener('click', function(){
     popupToggle(popup)
 } );
 popupCloseButton.addEventListener('click', () =>
-    popupToggle(popup));
+    popupToggle(popup)
+);
 
 function formSubmitHandler (evt) {//берем значения из профиля в попап
     evt.preventDefault();
@@ -77,6 +78,28 @@ function formSubmitHandler (evt) {//берем значения из профи�
     
     popupToggle(popup);
 }
+
+const closePopupOverlay = (evt) => {
+    if (evt.target !== evt.currentTarget){
+        return
+    }
+    popupToggle(evt.currentTarget)
+}
+
+popupStat.addEventListener('click', closePopupOverlay);
+popupImgOpen.addEventListener('click', closePopupOverlay);
+popupCard.addEventListener('click', closePopupOverlay);
+
+const keyHandler = (evt) => {
+    const activePopup = document.querySelector('popup_opened');
+    console.log(activePopup)
+    if(evt.keyCode === 27){
+        popupToggle(activePopup);
+    }
+}
+
+document.addEventListener('keydown', keyHandler);
+document.removeEventListener('keydown', keyHandler);
 
 formElement.addEventListener('submit', formSubmitHandler);
 

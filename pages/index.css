@@ -11,3 +11,6 @@
 
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/card/__label-like/_black/card__label-like_black.css);
+@import url(../blocks/popup/__error/__error_visible/popup__error_visible.css);
+@import url(../blocks/popup/__input/_type_error/popup__input_type_error.css);
+@import url(../blocks/popup/__save/_inactive/popup__save_inactive.css);
