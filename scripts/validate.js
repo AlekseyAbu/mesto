@@ -2,7 +2,7 @@ const obj = {
     formElement: '.popup__form',
     inputElement: '.popup__input',
     submitButtonSelector: '.popup__save',
-    inactiveButtonClass: '.popup__save_inactive',
+    inactiveButtonClass: 'popup__save_inactive',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
   };
@@ -21,12 +21,12 @@ function enableValidation ({formElement, ...rest}) {
 
 function setEventListernes(form, { inputElement, submitButtonSelector, inactiveButtonClass, ...rest}) {
     const inputs = Array.from(form.querySelectorAll(inputElement));
-    //const button = form.querySelector(submitButtonSelector);
+    const button = form.querySelector(submitButtonSelector);
     //const inactiveButton = document.querySelector(inactiveButtonClass);
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             isValid(form, input, rest);
-            toggleButtonState(submitButtonSelector, inactiveButtonClass, inputs, input);
+            toggleButtonState(inactiveButtonClass, inputs, input, button);
         })
         
     })
@@ -63,15 +63,15 @@ function hasInvalidInput(inputs){
     });
 }
 
-function toggleButtonState(submitButtonSelector, inactiveButtonClass, inputs, input){//изменение цвета кнопки
-    const button = document.querySelector(submitButtonSelector);
+function toggleButtonState(inactiveButtonClass, inputs, input, button){//изменение цвета кнопки
     if (hasInvalidInput(inputs)) {
-        button.classList.add(inactiveButtonClass);
+        button.classList.remove(inactiveButtonClass);
         button.removeAttribute('disabled');
         console.log(hasInvalidInput(inputs, input))
     } 
     else {
-        button.classList.remove(inactiveButtonClass);
+        button.classList.add(inactiveButtonClass);
         button.setAttribute('disabled', true);
+        console.log(button)
     }
 }
