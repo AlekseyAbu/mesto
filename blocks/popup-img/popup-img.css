@@ -9,7 +9,10 @@
     background: rgba(0, 0, 0, .5);
     top: 0;
     left: 0;
-    display: none;
+    visibility: collapse;
     align-items: center;
     justify-content: center;
+    display: flex;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }

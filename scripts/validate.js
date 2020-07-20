@@ -1,13 +1,4 @@
-const obj = {
-    formElement: '.popup__form',
-    inputElement: '.popup__input',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  };
 
-  enableValidation(obj);
 
 function enableValidation ({formElement, ...rest}) {
     const forms = Array.from(document.querySelectorAll(formElement));
@@ -59,19 +50,17 @@ function showInputError (form, input, inputErrorClass, errorClass) {
 
 function hasInvalidInput(inputs){
     return inputs.some((input) => {
-    return input.validity.valid;
+    return !input.validity.valid;
     });
 }
 
 function toggleButtonState(inactiveButtonClass, inputs, input, button){//изменение цвета кнопки
     if (hasInvalidInput(inputs)) {
-        button.classList.remove(inactiveButtonClass);
-        button.removeAttribute('disabled');
-        console.log(hasInvalidInput(inputs, input))
-    } 
-    else {
         button.classList.add(inactiveButtonClass);
         button.setAttribute('disabled', true);
-        console.log(button)
+    } 
+    else {
+        button.classList.remove(inactiveButtonClass);
+        button.removeAttribute('disabled');
     }
 }
