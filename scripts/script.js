@@ -73,7 +73,12 @@ function popupAdd(popupArg) {
 }
 
 function popupRemove(popupArg) {
-    popupArg.classList.remove('popup_opened');
+    // popupArg.classList.remove('popup_opened');
+    popupArg.classList.add('popup_close');
+    window.setTimeout(_ => {
+        popupArg.classList.remove('popup_opened');
+        popupArg.classList.remove('.popup_close');
+      }, 300)
     document.removeEventListener('keydown', keyHandler);
 }
 
@@ -156,8 +161,7 @@ popupImgCloseButton.addEventListener('click',() =>
 
 function formSubmitHandlerCard(e) {
     e.preventDefault();
-    const newCard = { name: cardName.value, link: link.value }
-    //addCard(newcard)
+    const newCard = { name: cardName.value, link: link.value, alt: cardName.value }
     const cardElement = addCard(newCard); 
     renderCard(cardElement, cardContainer);
     popupRemove(popupCard);

@@ -17,7 +17,7 @@ function setEventListernes(form, { inputElement, submitButtonSelector, inactiveB
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             isValid(form, input, rest);
-            toggleButtonState(inactiveButtonClass, inputs, input, button);
+            toggleButtonState(inactiveButtonClass, inputs, button);
         })
         
     })
@@ -54,7 +54,7 @@ function hasInvalidInput(inputs){
     });
 }
 
-function toggleButtonState(inactiveButtonClass, inputs, input, button){//изменение цвета кнопки
+function toggleButtonState(inactiveButtonClass, inputs, button){//изменение цвета кнопки
     if (hasInvalidInput(inputs)) {
         button.classList.add(inactiveButtonClass);
         button.setAttribute('disabled', true);

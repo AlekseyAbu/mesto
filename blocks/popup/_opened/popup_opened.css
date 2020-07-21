@@ -1,6 +1,12 @@
+@keyframes fadeIn {
+    0%   {opacity: 0;}
+    30% {opacity: 0.3;}
+    60% {opacity: 0.6;}
+    100% {opacity: 1;visibility: visible;}
+  }
+
 .popup_opened{
-    visibility: visible;
+    animation: fadeIn .3s linear forwards;
+    pointer-events: all;
     display: flex;
-    opacity: 1;
-    transition: visibility 0s, opacity 0.5s linear;
 }
