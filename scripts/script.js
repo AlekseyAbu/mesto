@@ -56,10 +56,6 @@ const initialCards = [
     }
 ];
 
-// function popupToggle(popupArg) { //вызов попапа
-//     popupArg.classList.toggle('popup_opened'); //с помощью класса, открываем и закрываем попап
-// }
-
 const keyHandler = (evt) => {
     const activePopup = document.querySelector('.popup_opened');
     if(evt.keyCode === 27){
@@ -71,14 +67,9 @@ function popupAdd(popupArg) {
     popupArg.classList.add('popup_opened');
     document.addEventListener('keydown', keyHandler);
 }
-
+//по рекомендации наставника сделал это по другому, немного проще и все вроде работает
 function popupRemove(popupArg) {
-    // popupArg.classList.remove('popup_opened');
-    popupArg.classList.add('popup_close');
-    window.setTimeout(_ => {
-        popupArg.classList.remove('popup_opened');
-        popupArg.classList.remove('.popup_close');
-      }, 300)
+    popupArg.classList.remove('popup_opened');
     document.removeEventListener('keydown', keyHandler);
 }
 
