@@ -13,6 +13,10 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: visibility 0.4s, opacity 0.4s linear;
+    visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
 }
