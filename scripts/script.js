@@ -111,7 +111,8 @@ function formSubmitHandlerCard(e) {
     const cardElement = card.generedCard();
     const cardImage = cardElement.querySelector('.card__img');
     cardImage.addEventListener('click', function(){
-        openPopupZoom(item);
+        console.log(newCard)
+        openPopupZoom(newCard);
         popupAdd(popupImgOpen);
     })
 
