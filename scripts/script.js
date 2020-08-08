@@ -1,5 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 export {popupAdd, popupRemove};
+import {Card} from './Card.js';
 
 const config ={
     formElement: '.popup__form',
@@ -100,35 +101,34 @@ popupCard.addEventListener('click', closePopupOverlay);
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-function addCard(item){ 
-    cardImage.addEventListener('click', function(){
-        openPopupZoom(item);
-        popupAdd(popupImgOpen);
-    })
-}
-
-
 popupImgCloseButton.addEventListener('click',() =>
     popupRemove(popupImgOpen));
 
 function formSubmitHandlerCard(e) {
     e.preventDefault();
     const newCard = { name: cardName.value, link: link.value, alt: cardName.value }
-    const cardElement = addCard(newCard); 
-    renderCard(cardElement, cardContainer);
+    const card = new Card(newCard, '.card');
+    const cardElement = card.generedCard();
+    const cardImage = cardElement.querySelector('.card__img');
+    cardImage.addEventListener('click', function(){
+        openPopupZoom(item);
+        popupAdd(popupImgOpen);
+    })
+
+    const cardContainer = document.querySelector('.content__cards');
+    cardContainer.prepend(cardElement);
     popupRemove(popupCard);
 
     cardName.value = '';
     link.value = '';
 }
 
-formElementCard.addEventListener('submit', formSubmitHandlerCard);
-
-//функция открытия попапа с картинкой
 function openPopupZoom(item){
     popupLink.src = item.link;
     popupName.textContent = item.name;
 }
+
+formElementCard.addEventListener('submit', formSubmitHandlerCard);
 
 
 

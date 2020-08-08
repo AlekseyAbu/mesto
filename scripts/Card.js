@@ -27,7 +27,7 @@ const initialCards = [
 
 import {popupAdd, popupRemove} from './script.js';
 
-class Card {
+export class Card {
     constructor(data, cardSelector){
         this._name = data.name;
         this._link = data.link;
@@ -52,7 +52,6 @@ class Card {
         this._element.querySelector('.card__img').alt = this._link;
         this._cardLabelLike();
         this._basketEventListener();
-        this._popupOpen();
 
         return this._element;
     }
@@ -75,24 +74,21 @@ class Card {
             this._deleteCard();
         });
     }
-
-    _popupOpen() {
-        const popup = document.querySelector('.popup-img');
-        console.log(this._element)
-        const popupLink = document.querySelector('.popup-img__img');
-        const popupName = document.querySelector('.popup-img__text');
-        popupLink.src = this._link;
-        popupName.textContent = this._name;
-        this._element.addEventListener('click', () => {
-            popup.classList.add('popup_opened')
-        })
-    }
 }
 
 initialCards.forEach ((item) =>  {
     const card = new Card(item, '.card'); 
     const cardElement = card.generedCard();
 
+    const popupImgOpen = document.querySelector('.popup-img');
     const cardContainer = document.querySelector('.content__cards');
     cardContainer.prepend(cardElement);
+    const cardImage = cardElement.querySelector('.card__img');
+    cardImage.addEventListener('click', function(){
+        const popupLink = document.querySelector('.popup-img__img');
+        const popupName = document.querySelector('.popup-img__text');
+        popupLink.src = item.link;
+        popupName.textContent = item.name;
+        popupAdd(popupImgOpen);
+    })
 })
