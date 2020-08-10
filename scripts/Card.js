@@ -1,3 +1,5 @@
+
+import {popupAdd, popupRemove} from './index.js';
 const initialCards = [
     {
         name: 'Архыз',
@@ -24,8 +26,6 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
-import {popupAdd, popupRemove} from './script.js';
 
 export class Card {
     constructor(data, cardSelector){

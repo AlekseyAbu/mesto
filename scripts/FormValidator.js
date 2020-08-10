@@ -68,4 +68,14 @@ export class FormValidator {
             forma.querySelector(this._submitButtonSelector).removeAttribute('disabled');
         }
     }
+
+    _disableBut() {
+        const forma = document.querySelector(this._form)
+        forma.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass);
+        forma.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
+    }
+
+    resetForm = () => {
+        this._disableBut();
+    }
 }

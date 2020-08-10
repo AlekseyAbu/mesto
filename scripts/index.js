@@ -1,6 +1,6 @@
 import {FormValidator} from './FormValidator.js';
-export {popupAdd, popupRemove};
 import {Card} from './Card.js';
+export {popupAdd, popupRemove};
 
 const config ={
     formElement: '.popup__form',
@@ -34,18 +34,16 @@ const jobInput = document.querySelector('.popup__input_description');
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 
-//const cardContainer = document.querySelector('.content__cards');
 const saveClose = document.querySelector('.popup__save');
-
 const popupLink = document.querySelector('.popup-img__img');
 const popupName = document.querySelector('.popup-img__text');
 const popupImgOpen = document.querySelector('.popup-img');
-
 const popupImgCloseButton = document.querySelector('.popup__close-button_img');
 const formCardPopup = document.querySelector('.popup__save_card');
 const cardName = document.querySelector('.popup__input_cardname');
 const link = document.querySelector('.popup__input_link');
 const formElementCard = document.querySelector('.popup__form_card');
+const cardContainer = document.querySelector('.content__cards');
 
 const keyHandler = (evt) => {
     const activePopup = document.querySelector('.popup_opened');
@@ -64,8 +62,10 @@ function popupRemove(popupArg) {
     document.removeEventListener('keydown', keyHandler);
 }
 
-popupCardOpenButton.addEventListener('click', () =>
-    popupAdd(popupCard));
+popupCardOpenButton.addEventListener('click', () => {
+    popupAdd(popupCard);
+    addCardForm.resetForm();
+});
 popupCardCloseButton.addEventListener('click', () =>
     popupRemove(popupCard));
 
@@ -111,15 +111,14 @@ function formSubmitHandlerCard(e) {
     const cardElement = card.generedCard();
     const cardImage = cardElement.querySelector('.card__img');
     cardImage.addEventListener('click', function(){
-        console.log(newCard)
         openPopupZoom(newCard);
         popupAdd(popupImgOpen);
     })
 
-    const cardContainer = document.querySelector('.content__cards');
     cardContainer.prepend(cardElement);
     popupRemove(popupCard);
-
+    
+    addCardForm.resetForm();
     cardName.value = '';
     link.value = '';
 }
@@ -127,6 +126,7 @@ function formSubmitHandlerCard(e) {
 function openPopupZoom(item){
     popupLink.src = item.link;
     popupName.textContent = item.name;
+    popupLink.src = item.alt;
 }
 
 formElementCard.addEventListener('submit', formSubmitHandlerCard);
