@@ -1,6 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
-export {popupAdd, popupRemove};
+import {popupAdd, popupRemove} from './utils.js';
 
 const config ={
     formElement: '.popup__form',
@@ -45,22 +45,7 @@ const link = document.querySelector('.popup__input_link');
 const formElementCard = document.querySelector('.popup__form_card');
 const cardContainer = document.querySelector('.content__cards');
 
-const keyHandler = (evt) => {
-    const activePopup = document.querySelector('.popup_opened');
-    if(evt.keyCode === 27){
-        popupRemove(activePopup);
-    }
-}
 
-function popupAdd(popupArg) {
-    popupArg.classList.add('popup_opened');
-    document.addEventListener('keydown', keyHandler);
-}
-
-function popupRemove(popupArg) {
-    popupArg.classList.remove('popup_opened');
-    document.removeEventListener('keydown', keyHandler);
-}
 
 popupCardOpenButton.addEventListener('click', () => {
     popupAdd(popupCard);
@@ -131,6 +116,49 @@ function openPopupZoom(item){
 
 formElementCard.addEventListener('submit', formSubmitHandlerCard);
 
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
 
+
+
+initialCards.forEach ((item) =>  {
+    const card = new Card(item, '.card'); 
+    const cardElement = card.generedCard();
+
+    // const popupImgOpen = document.querySelector('.popup-img');
+    cardContainer.prepend(cardElement);
+    // const cardImage = cardElement.querySelector('.card__img');
+    // cardImage.addEventListener('click', function(){
+    //     const popupLink = document.querySelector('.popup-img__img');
+    //     const popupName = document.querySelector('.popup-img__text');
+    //     popupLink.src = item.link;
+    //     popupName.textContent = item.name;
+    //     popupAdd(popupImgOpen);
+    // })
+})
 
 
