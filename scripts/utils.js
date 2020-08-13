@@ -1,4 +1,4 @@
-export {keyHandler, popupAdd, popupRemove};
+export {openPopup, closePopup};
 
 const keyHandler = (evt) => {
     const activePopup = document.querySelector('.popup_opened');
@@ -7,12 +7,12 @@ const keyHandler = (evt) => {
     }
 }
 
-function popupAdd(popupArg) {
+function openPopup(popupArg) {
     popupArg.classList.add('popup_opened');
     document.addEventListener('keydown', keyHandler);
 }
 
-function popupRemove(popupArg) {
+function closePopup(popupArg) {
     popupArg.classList.remove('popup_opened');
     document.removeEventListener('keydown', keyHandler);
 }

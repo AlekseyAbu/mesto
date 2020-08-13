@@ -1,6 +1,4 @@
-import {keyHandler, popupAdd} from './utils.js';
-
-console.log(keyHandler);
+import {openPopup} from './utils.js';
 
 export class Card {
     constructor(data, cardSelector){
@@ -54,15 +52,14 @@ export class Card {
 
     _addHandlerPopup(){
         const cardImg = this._element.querySelector('.card__img');
-        cardImg.addEventListener('click', _ => {
-            const popupLink = document.querySelector('.popup-img__img');
+        const popupLink = document.querySelector('.popup-img__img');
             const popupName = document.querySelector('.popup-img__text');
             const popupImgOpen = document.querySelector('.popup-img');
+        cardImg.addEventListener('click', _ => {
             popupLink.src = this._link;
+            popupLink.alt = this._link;
             popupName.textContent = this._name;
-            console.log(this._link);
-            console.log(this._name);
-            popupAdd(popupImgOpen);
+            openPopup(popupImgOpen);
         })
     }
 }

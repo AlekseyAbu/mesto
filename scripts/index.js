@@ -1,6 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 import {Card} from './Card.js';
-import {popupAdd, popupRemove} from './utils.js';
+import {openPopup, closePopup} from './utils.js';
 
 const config ={
     formElement: '.popup__form',
@@ -34,12 +34,12 @@ const jobInput = document.querySelector('.popup__input_description');
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 
-const saveClose = document.querySelector('.popup__save');
-const popupLink = document.querySelector('.popup-img__img');
-const popupName = document.querySelector('.popup-img__text');
+// const saveClose = document.querySelector('.popup__save');
+// const popupLink = document.querySelector('.popup-img__img');
+// const popupName = document.querySelector('.popup-img__text');
 const popupImgOpen = document.querySelector('.popup-img');
 const popupImgCloseButton = document.querySelector('.popup__close-button_img');
-const formCardPopup = document.querySelector('.popup__save_card');
+// const formCardPopup = document.querySelector('.popup__save_card');
 const cardName = document.querySelector('.popup__input_cardname');
 const link = document.querySelector('.popup__input_link');
 const formElementCard = document.querySelector('.popup__form_card');
@@ -48,20 +48,20 @@ const cardContainer = document.querySelector('.content__cards');
 
 
 popupCardOpenButton.addEventListener('click', () => {
-    popupAdd(popupCard);
+    openPopup(popupCard);
     addCardForm.resetForm();
 });
 popupCardCloseButton.addEventListener('click', () =>
-    popupRemove(popupCard));
+    closePopup(popupCard));
 
 popupOpenButton.addEventListener('click', function(){
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
    
-    popupAdd(popup);
+    openPopup(popup);
 } );
 popupCloseButton.addEventListener('click', () =>
-    popupRemove(popup)
+    closePopup(popup)
 );
 
 function formSubmitHandler (evt) {
@@ -70,14 +70,14 @@ function formSubmitHandler (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     
-    popupRemove(popup);
+    closePopup(popup);
 }
 
 const closePopupOverlay = (evt) => {
     if (evt.target !== evt.currentTarget){
         return
     }
-    popupRemove(evt.currentTarget)
+    closePopup(evt.currentTarget)
 }
 
 popupStat.addEventListener('click', closePopupOverlay);
@@ -87,31 +87,20 @@ popupCard.addEventListener('click', closePopupOverlay);
 formElement.addEventListener('submit', formSubmitHandler);
 
 popupImgCloseButton.addEventListener('click',() =>
-    popupRemove(popupImgOpen));
+    closePopup(popupImgOpen));
 
 function formSubmitHandlerCard(e) {
     e.preventDefault();
     const newCard = { name: cardName.value, link: link.value, alt: cardName.value }
     const card = new Card(newCard, '.card');
     const cardElement = card.generedCard();
-    const cardImage = cardElement.querySelector('.card__img');
-    cardImage.addEventListener('click', function(){
-        openPopupZoom(newCard);
-        popupAdd(popupImgOpen);
-    })
 
     cardContainer.prepend(cardElement);
-    popupRemove(popupCard);
+    closePopup(popupCard);
     
     addCardForm.resetForm();
     cardName.value = '';
     link.value = '';
-}
-
-function openPopupZoom(item){
-    popupLink.src = item.link;
-    popupName.textContent = item.name;
-    popupLink.src = item.alt;
 }
 
 formElementCard.addEventListener('submit', formSubmitHandlerCard);
@@ -149,16 +138,7 @@ initialCards.forEach ((item) =>  {
     const card = new Card(item, '.card'); 
     const cardElement = card.generedCard();
 
-    // const popupImgOpen = document.querySelector('.popup-img');
     cardContainer.prepend(cardElement);
-    // const cardImage = cardElement.querySelector('.card__img');
-    // cardImage.addEventListener('click', function(){
-    //     const popupLink = document.querySelector('.popup-img__img');
-    //     const popupName = document.querySelector('.popup-img__text');
-    //     popupLink.src = item.link;
-    //     popupName.textContent = item.name;
-    //     popupAdd(popupImgOpen);
-    // })
 })
 
 
