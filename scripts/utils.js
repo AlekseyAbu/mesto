@@ -3,7 +3,7 @@ export {openPopup, closePopup};
 const keyHandler = (evt) => {
     const activePopup = document.querySelector('.popup_opened');
     if(evt.keyCode === 27){
-        popupRemove(activePopup);
+        closePopup(activePopup);
     }
 }
 
