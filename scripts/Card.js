@@ -1,7 +1,7 @@
-import {openPopup} from './utils.js';
+import { openPopup } from './utils.js';
 
 export class Card {
-    constructor(data, cardSelector){
+    constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
@@ -9,10 +9,10 @@ export class Card {
 
     _getTemplate() {
         const cardElement = document
-        .querySelector('#card')//не очень понял, что Вы имеете в виду?
-        .content
-        .querySelector('.card')
-        .cloneNode(true);
+            .querySelector('#card')//не очень понял, что Вы имеете в виду?
+            .content
+            .querySelector('.card')
+            .cloneNode(true);
 
         this._element = cardElement;
         return this._element;
@@ -31,7 +31,7 @@ export class Card {
         return this._element;
     }
 
-    _deleteLike () {
+    _deleteLike() {
         this._element.querySelector('.card__label-like').classList.toggle('card__label-like_black');
     }
     _cardLabelLike() {
@@ -45,16 +45,16 @@ export class Card {
         this._element = null;
     }
     _basketEventListener() {
-        this._element.querySelector('.card__basket').addEventListener('click',  () => {
+        this._element.querySelector('.card__basket').addEventListener('click', () => {
             this._deleteCard();
         });
     }
 
-    _addHandlerPopup(){
+    _addHandlerPopup() {
         const cardImg = this._element.querySelector('.card__img');
         const popupLink = document.querySelector('.popup-img__img');
-            const popupName = document.querySelector('.popup-img__text');
-            const popupImgOpen = document.querySelector('.popup-img');
+        const popupName = document.querySelector('.popup-img__text');
+        const popupImgOpen = document.querySelector('.popup-img');
         cardImg.addEventListener('click', _ => {
             popupLink.src = this._link;
             popupLink.alt = this._link;

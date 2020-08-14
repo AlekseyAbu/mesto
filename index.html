@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
+
 <body class="body">
     <header class="header">
         <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
@@ -17,19 +19,19 @@
             <div class="profile__description">
                 <div class="profile__name">
                     <h2 class="profile__title">Жак-Ив Кусто</h2>
-                    <button class="profile__title-buttom" ></button>
-                </div>    
+                    <button class="profile__title-buttom"></button>
+                </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
             <button class="profile__button">
                 <img class="profile__plus" src="./images/plus.svg" alt="Плюс">
-            </button>  
+            </button>
         </section>
 
         <section class="content">
             <ul class="content__cards">
-            
-            </ul> 
+
+            </ul>
         </section>
     </main>
 
@@ -42,9 +44,11 @@
             <button class="popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" name="save" novalidate>
-                <input id='input__name' type="text" class="popup__input popup__input_name" name="name" value="" minlength="2" maxlength="40" required>
+                <input id='input__name' type="text" class="popup__input popup__input_name" name="name" value=""
+                    minlength="2" maxlength="40" required>
                 <span id='input__name-error' class="popup__error"></span>
-                <input id='input__description' type="text" class="popup__input popup__input_description" name="description" value="" minlength="2" maxlength="200" required>
+                <input id='input__description' type="text" class="popup__input popup__input_description"
+                    name="description" value="" minlength="2" maxlength="200" required>
                 <span id='input__description-error' class="popup__error"></span>
                 <button class="popup__save">Сохранить</button>
             </form>
@@ -56,9 +60,11 @@
             <button class="popup__close-button popup__close-button_card"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form popup__form_card" name="save" novalidate>
-                <input id='input__cardname' type="text" class="popup__input popup__input_name popup__input_cardname" name="name" value="" placeholder='Название' required minlength="2" maxlength="40">
+                <input id='input__cardname' type="text" class="popup__input popup__input_name popup__input_cardname"
+                    name="name" value="" placeholder='Название' required minlength="2" maxlength="40">
                 <span id='input__cardname-error' class="popup__error"></span>
-                <input id='input__link' type="url" class="popup__input popup__input_description popup__input_link" name="description" value="" placeholder="Ссылка на картинку" required>
+                <input id='input__link' type="url" class="popup__input popup__input_description popup__input_link"
+                    name="description" value="" placeholder="Ссылка на картинку" required>
                 <span id='input__link-error' class="popup__error"></span>
                 <button class="popup__save popup__save_card" disabled="disabled">Сохранить</button>
             </form>
@@ -83,5 +89,5 @@
             <p class="popup-img__text"></p>
         </div>
     </section>
-<script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
 </body>

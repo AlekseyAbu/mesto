@@ -1,17 +1,17 @@
-import {FormValidator} from './FormValidator.js';
-import {Card} from './Card.js';
-import {openPopup, closePopup} from './utils.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
+import { openPopup, closePopup } from './utils.js';
 
-const config ={
+const config = {
     formElement: '.popup__form',
     inputElement: '.popup__input',
     submitButtonSelector: '.popup__save',
     inactiveButtonClass: 'popup__save_inactive',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible' 
+    errorClass: 'popup__error_visible'
 }
 
-const editForm = new FormValidator(config ,'.popup_profile')
+const editForm = new FormValidator(config, '.popup_profile')
 const addCardForm = new FormValidator(config, '.popup_card')
 
 editForm.enableValidation();
@@ -54,27 +54,27 @@ popupCardOpenButton.addEventListener('click', () => {
 popupCardCloseButton.addEventListener('click', () =>
     closePopup(popupCard));
 
-popupOpenButton.addEventListener('click', function(){
+popupOpenButton.addEventListener('click', function () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
-   
+
     openPopup(popup);
-} );
+});
 popupCloseButton.addEventListener('click', () =>
     closePopup(popup)
 );
 
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
     evt.preventDefault();
-    
+
     name.textContent = nameInput.value
     job.textContent = jobInput.value
-    
+
     closePopup(popup);
 }
 
 const closePopupOverlay = (evt) => {
-    if (evt.target !== evt.currentTarget){
+    if (evt.target !== evt.currentTarget) {
         return
     }
     closePopup(evt.currentTarget)
@@ -86,7 +86,7 @@ popupCard.addEventListener('click', closePopupOverlay);
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-popupImgCloseButton.addEventListener('click',() =>
+popupImgCloseButton.addEventListener('click', () =>
     closePopup(popupImgOpen));
 
 function formSubmitHandlerCard(e) {
@@ -97,7 +97,7 @@ function formSubmitHandlerCard(e) {
 
     cardContainer.prepend(cardElement);
     closePopup(popupCard);
-    
+
     addCardForm.resetForm();
     cardName.value = '';
     link.value = '';
@@ -134,8 +134,8 @@ const initialCards = [
 
 
 
-initialCards.forEach ((item) =>  {
-    const card = new Card(item, '.card'); 
+initialCards.forEach((item) => {
+    const card = new Card(item, '.card');
     const cardElement = card.generedCard();
 
     cardContainer.prepend(cardElement);
