@@ -1,15 +1,16 @@
-import { openPopup } from './utils.js';
+// import { openPopup } from '../utils/utils.js';
 
 export class Card {
-    constructor(data, cardSelector) {
+    constructor({data, handleCardClick}, cardSelector) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
         const cardElement = document
-            .querySelector('#card')//не очень понял, что Вы имеете в виду?
+            .querySelector('#card')
             .content
             .querySelector('.card')
             .cloneNode(true);
@@ -26,7 +27,7 @@ export class Card {
         cardImg.alt = this._link;
         this._cardLabelLike();
         this._basketEventListener();
-        this._addHandlerPopup();
+        this._setEventListener();
 
         return this._element;
     }
@@ -50,16 +51,7 @@ export class Card {
         });
     }
 
-    _addHandlerPopup() {
-        const cardImg = this._element.querySelector('.card__img');
-        const popupLink = document.querySelector('.popup-img__img');
-        const popupName = document.querySelector('.popup-img__text');
-        const popupImgOpen = document.querySelector('.popup-img');
-        cardImg.addEventListener('click', _ => {
-            popupLink.src = this._link;
-            popupLink.alt = this._link;
-            popupName.textContent = this._name;
-            openPopup(popupImgOpen);
-        })
+    _setEventListener() {
+        this._element.querySelector('.card__img').addEventListener('click', () => this._handleCardClick());
     }
 }
