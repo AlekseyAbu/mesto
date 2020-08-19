@@ -9,6 +9,7 @@ export class FormValidator {
         this._inputErrorClass = config.inputErrorClass;
         this._errorClass = config.errorClass;
         this._form = form;
+        this.resetForm = this.resetForm.bind(this);
     }
 
     enableValidation() {
@@ -75,7 +76,7 @@ export class FormValidator {
         forma.querySelector(this._submitButtonSelector).setAttribute('disabled', true);
     }
 
-    resetForm = () => {
+    resetForm () {
         this._disableBut();
     }
 }

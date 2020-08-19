@@ -1,0 +1,28 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "1 Свестали сайт использую технику гридов, флекса.  \tИспользуя js логику начился работать с popup-формами",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack-dev-server --open--watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlekseyAbu/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlekseyAbu/mesto/issues"
+  },
+  "homepage": "https://github.com/AlekseyAbu/mesto#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
+}
