@@ -1,11 +1,8 @@
 import { FormValidator } from './components/FormValidator.js';
 import { Card } from './components/Card.js';
-// import { openPopup, closePopup } from '../../utils/utils.js';
-import { popup, popupOpenButton, popupCloseButton, popupCard, popupCardOpenButton, popupCardCloseButton, popupStat, formElement, nameInput, jobInput, name, job, popupImgOpen, popupImgCloseButton, cardName, link, formElementCard, cardContainer, initialCards } from './utils/constants.js';
+import { popup, popupOpenButton, popupCardOpenButton, nameInput, jobInput, name, job, cardContainer, initialCards } from './utils/constants.js';
 import { Section } from './components/Section.js';
-import { Popup } from './components/Popup.js';
 import { PopupWithImage } from './components/PopupWithImage.js';
-// import { PopupWithForm } from '../../components/PopupWithForm';
 import { PopupWithForm } from './components/PopupWithForm.js';
 import { UserInfo } from './components/UserInfo.js';
 import './pages/index.css';

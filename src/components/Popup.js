@@ -20,7 +20,6 @@ export class Popup{
     }
 
     _handleEscClose(evt) {
-        // const activePopup = document.querySelector('.popup_opened');
         if (evt.keyCode === 27) {
             this._popupElement.classList.remove('popup_opened');
         }
@@ -43,6 +42,6 @@ export class Popup{
         popupCardCloseButton.addEventListener('click', () => {
             this.close();
         })
-        this._popupElement.addEventListener('click', () => this._handleOverlayClose);
+        this._popupElement.addEventListener('click', (evt) => this._handleOverlayClose(evt));
     }
 }
