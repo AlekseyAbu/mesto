@@ -10,9 +10,9 @@ export class Card {
 
     _getTemplate() {
         const cardElement = document
-            .querySelector('#card')//я же тут темплайт шаблон ищу, а не селектор класса.
+            .querySelector(this._cardSelector)//я же тут темплайт шаблон ищу, а не селектор класса.
             .content
-            .querySelector(this._cardSelector)//возможно ошибку для этой строки
+            .querySelector('.card')//возможно ошибку для этой строки
             .cloneNode(true);
 
         this._element = cardElement;
