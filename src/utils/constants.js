@@ -2,7 +2,7 @@
 
 export const popup = document.querySelector('.popup_profile');
 export const popupOpenButton = document.querySelector('.profile__title-buttom');
-export const popupCloseButton = popup.querySelector('.popup__close-button');
+export const popupCloseButton = document.querySelectorAll('.popup__close-button');
 export const popupCard = document.querySelector('.popup_card');
 export const popupCardOpenButton = document.querySelector('.profile__button');
 export const popupCardCloseButton = document.querySelector('.popup__close-button_card');

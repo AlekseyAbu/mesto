@@ -1,4 +1,3 @@
-import {popupCloseButton, popupImgCloseButton, popupCardCloseButton} from '../utils/constants.js';
 
 export class Popup{
     constructor(popupSelector){
@@ -33,13 +32,8 @@ export class Popup{
     }
 
     setEventListeners() {
-        popupCloseButton.addEventListener('click', () => {
-            this.close();
-        })
-        popupImgCloseButton.addEventListener('click', () => {
-            this.close();
-        })
-        popupCardCloseButton.addEventListener('click', () => {
+        const popupClose = this._popupElement.querySelector('.popup__close-button')
+        popupClose.addEventListener('click', () => {
             this.close();
         })
         this._popupElement.addEventListener('click', (evt) => this._handleOverlayClose(evt));
