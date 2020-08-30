@@ -75,7 +75,7 @@ api.getAppInfo()
                                 popupDeletCard.close();
                             })
                         })
-                        // popupDeletCard.open();
+                        popupDeletCard.open();
                         
                         
                     }
@@ -100,6 +100,7 @@ api.getAppInfo()
         },
             cardContainer);
         cardList.renderItems();
+        const openPopupImg = new PopupWithImage('.popup-img');
         openPopupImg.setEventListeners();
 
         //Creating a card via Popup
@@ -148,8 +149,7 @@ api.getAppInfo()
                         userInfoProfile.setUserInfo({ userName: item.name, userAbout: item.about})
                         popupFormProfile.close();
                     })
-                    // userInfoProfile.setUserInfo(item)
-                    // popupFormProfile.close();
+
                 }
             })
 
@@ -159,12 +159,10 @@ api.getAppInfo()
         const popupFormAvatar = new PopupWithForm('.popup_avatar',
             {
                 submitForm: (item) => {
-                    // console.log(item.name)
                     togglePreloader(true, '.popup__save_avatar')
                     api.creatAvatar(item.name).then((res) => {
                         togglePreloader(false, '.popup__save_avatar')
                         console.log({userAvatar: res.avatar})
-                        // userInfoProfile.setUserInfo({userAvatar: res.avatar})
                         popupOpenAvatar.style.backgroundImage = `url(${res.avatar})`
                         popupFormAvatar.close();
                     })
@@ -178,10 +176,7 @@ api.getAppInfo()
         })
     })
     .catch(err => console.error(err))
-
-
-
-const openPopupImg = new PopupWithImage('.popup-img');
+    .finally(_ => togglePreloader(false, '.popup__save_avatar'), togglePreloader(false, '.popup__save'), togglePreloader(false, '.popup__save_card'))
 
 ///// Открытие попапа с данными профиля
 // const userInfoProfile = new UserInfo({
