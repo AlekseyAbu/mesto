@@ -22,6 +22,7 @@ export const cardName = document.querySelector('.popup__input_cardname');
 export const link = document.querySelector('.popup__input_link');
 export const formElementCard = document.querySelector('.popup__form_card');
 export const cardContainer = document.querySelector('.content__cards');
+export const popupOpenAvatar = document.querySelector('.profile__foto');
 
 export const initialCards = [
     {
