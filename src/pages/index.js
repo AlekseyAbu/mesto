@@ -41,8 +41,7 @@ api.getAppInfo()
     .then((res) => {
         const [initialCard, profileData] = res;
         const userIdme = profileData._id;
-        function generateCard(item) {
-
+        function generateCard(item, toAppend) {
             const card = new Card(
                 {
                     data: item,
@@ -62,13 +61,6 @@ api.getAppInfo()
                         })
                     },
                     handleDeleteClick: (id) => {
-                        // api.deletInitialCards(id).then(res => {
-                        //     card.deleteCard();
-                        // })
-
-                        
-                        
-
                         popupDeletCard.setSubmitAction(() => {
                             api.deletInitialCards(id).then(res => {
                                 card.deleteCard();
@@ -76,26 +68,29 @@ api.getAppInfo()
                             })
                         })
                         popupDeletCard.open();
-                        
-                        
                     }
-
                 },
                 '#card');
-            const cardElement = card.generedCard();
-            cardList.addItem(cardElement);
+                if(toAppend){
+                    const cardElement = card.generedCard();
+                    cardList.appendItem(cardElement);
+                }
+                else{
+                    const cardElement = card.generedCard();
+                    cardList.prependItem(cardElement);
+                }
+            // const cardElement = card.generedCard();
+            // cardList.addItem(cardElement);
         }
 
         const popupDeletCard = new PopupWithSubmit('.popup_confirm')
         popupDeletCard.setEventListeners();
-        
-        // popupCardBasket.addEventListener('click', () => {popupDeletCard.open()})
 
         //Uploading cards from the server
         const cardList = new Section({
             items: initialCard,
             renderer: (items) => {
-                generateCard(items);
+                generateCard(items, true);
             }
         },
             cardContainer);
@@ -109,7 +104,7 @@ api.getAppInfo()
                 togglePreloader(true, '.popup__save_card')
                 api.createInitialCards(item).then(res => {
                     togglePreloader(false, '.popup__save_card')
-                    generateCard(res);
+                    generateCard(res, false);
                     popupFormCard.close();
                 })
             }
@@ -146,10 +141,12 @@ api.getAppInfo()
                     togglePreloader(true, '.popup__save')
                     api.creatProfile(item).then((item) => {
                         togglePreloader(false, '.popup__save')
-                        userInfoProfile.setUserInfo({ userName: item.name, userAbout: item.about})
+                        userInfoProfile.setUserInfo({ userName: item.name, userAbout: item.about })
                         popupFormProfile.close();
                     })
-
+                    .catch((err) => {
+                        console.log(err); 
+                      });
                 }
             })
 
@@ -162,10 +159,13 @@ api.getAppInfo()
                     togglePreloader(true, '.popup__save_avatar')
                     api.creatAvatar(item.name).then((res) => {
                         togglePreloader(false, '.popup__save_avatar')
-                        console.log({userAvatar: res.avatar})
+                        console.log({ userAvatar: res.avatar })
                         popupOpenAvatar.style.backgroundImage = `url(${res.avatar})`
                         popupFormAvatar.close();
                     })
+                    .catch((err) => {
+                        console.log(err); 
+                      });
                 }
             }
         )
