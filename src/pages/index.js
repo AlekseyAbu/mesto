@@ -54,11 +54,17 @@ api.getAppInfo()
                         api.likeCard(id).then(res => {
                             card.updateLikes(res.likes);
                         })
+                        .catch((err) => {
+                            console.log(err); 
+                          });
                     },
                     handleDislikeClick: (id) => {
                         api.dislikeCard(id).then(res => {
                             card.updateLikes(res.likes);
                         })
+                        .catch((err) => {
+                            console.log(err); 
+                          });
                     },
                     handleDeleteClick: (id) => {
                         popupDeletCard.setSubmitAction(() => {
@@ -66,6 +72,9 @@ api.getAppInfo()
                                 card.deleteCard();
                                 popupDeletCard.close();
                             })
+                            .catch((err) => {
+                                console.log(err); 
+                              });
                         })
                         popupDeletCard.open();
                     }
@@ -107,6 +116,9 @@ api.getAppInfo()
                     generateCard(res, false);
                     popupFormCard.close();
                 })
+                .catch((err) => {
+                    console.log(err); 
+                  });
             }
         });
         popupFormCard.setEventListeners();
